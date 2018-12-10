@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+title: 正直清纯的女大学生
+subtitle: 
 description:
-keywords:
-author: John Doe
-language:
+keywords: ['正直', '清纯', '女大学生']
+author: HU NING
+language: zh-CN
 timezone:
 
 # URL
@@ -28,6 +28,12 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
+# Search
+search:
+  path: search.xml
+  field: post
+  format: html
+  content: true
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -73,7 +79,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
