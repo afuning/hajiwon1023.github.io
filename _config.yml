@@ -87,3 +87,13 @@ deploy:
   type: git
   repo: https://github.com/hajiwon1023/hajiwon1023.github.io.git
   branch: master
+
+#MarkDown配置
+## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki/
+markdown:
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
