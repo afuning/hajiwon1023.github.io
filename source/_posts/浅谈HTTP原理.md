@@ -43,6 +43,8 @@ tags: HTTP
 
 ## HTTP演变过程
 
+HTTP连接是HTTP报文传输的关键通道。
+
 ### 起源
 
 是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起，标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一系列的RFC。
@@ -58,11 +60,14 @@ tags: HTTP
 
 ## HTTP是如何工作的
 
-dfdfdfdf
-
 ### HTTP连接
 
-'l;lg;fl;g
+HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通信都是由TCP/IP承载的。因此首先需了解TCP/IP连接是什么？。
+
+TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。
+
+####
+
 
 ### HTTP架构
 
