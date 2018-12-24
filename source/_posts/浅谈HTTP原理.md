@@ -62,11 +62,11 @@ HTTP连接是HTTP报文传输的关键通道。
 
 ### HTTP连接
 
-HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通信都是由TCP/IP承载的。因此首先需了解TCP/IP连接是什么？。
-
-TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。
+HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通信都是由TCP/IP承载的。因此TCP/IP的连接过程是？。
 
 #### TCP/IP连接
+
+TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。一般来说，TCP/IP是利用IP进行通信时所必须用到的协议群的统称。具体来说IP或ICMP、TCP或UDP、TELENT或FTP、以及HTTP等都属于TCP/IP协议。如图所示：
 
 
 ### HTTP架构
@@ -83,4 +83,4 @@ fglfkglfkg
 
 [^2]: 有静态文件，也有**动态内容。静态资源**包括*文本文件、HTML文件、Word文件、图片文件、视频文件*等。动态内容即是根据身份、所求信息、不同时段产生不同内容。并通过**MIME**来描述并标记媒体内容例如：```Content-type: image/jpeg```
 
-[^3]: 称为统一资源标识符（Uniform Resource Identifier），有两种形式分别称为**URL（统一资源定位符）**和**URN（统一资源名）**。URL由三部分组成`*协议类型*（http://）、*服务器的英特网地址*（www.google.com）、*服务器上的某个资源*（/images/example.jpg）`例如：<http://www.google.com/images/example.jpg>
+[^3]: 称为统一资源标识符（Uniform Resource Identifier），有两种形式分别称为**URL（统一资源定位符）**和**URN（统一资源名）**。URL由三部分组成*协议类型*（`http://`）、*服务器的英特网地址*（www.google.com）、*服务器上的某个资源*（/images/example.jpg）例如：<http://www.google.com/images/example.jpg>
