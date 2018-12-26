@@ -62,12 +62,19 @@ HTTP连接是HTTP报文传输的关键通道。
 
 ### HTTP连接
 
-HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通信都是由TCP/IP承载的。因此TCP/IP的连接过程是？。
+HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通信都是由TCP/IP承载的。HTTP连接实际上就是TCP连接及其使用规则。
 
-#### TCP/IP连接
+#### TCP/IP
 
-TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。一般来说，TCP/IP是利用IP进行通信时所必须用到的协议群的统称。具体来说IP或ICMP、TCP或UDP、TELENT或FTP、以及HTTP等都属于TCP/IP协议。如图所示：
+TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。一般来说，TCP/IP是利用IP进行通信时所必须用到的协议群的统称。具体来说IP或ICMP、TCP或UDP、TELENT或FTP、以及HTTP等都属于TCP/IP协议。
 
+如图所示：HTTP即位于Application层（HTTPS则是在Application层和Transport层增加安全层），TCP则位于Transport层，IP位于Internet层：
+![TCP/IP](http://www.nomiwan.com/TCP:IP%E5%8D%8F%E8%AE%AE%E7%BE%A4.png)
+
+HTTP以流的形式将报文数据的内容通过一条打开的TCP连接按序传输，TCP将数据流砍成段，封装在IP分组中。通过英特网进行传输。如图所示：
+![TCP数据流](http://www.nomiwan.com/TCP%E6%95%B0%E6%8D%AE%E6%B5%81.png)
+
+#### TCP/IP
 
 ### HTTP架构
 
