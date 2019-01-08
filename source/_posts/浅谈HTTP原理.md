@@ -7,7 +7,7 @@ tags: HTTP
 ## HTTP到底是什么
 
 缩&#160;&#160;写：**HTTP**  
-英文名：**HyperText Transfer Protocol** *（又称Hypertext Transfer Protocol）*   
+英文名：**HyperText Transfer Protocol** *（称[haɪpə(r)][prəʊtəkɒl]）*   
 中文名：**超文本传输协议**  
 角&#160;&#160;色：**万维网的数据通信基础**  
 位&#160;&#160;置：**7层OSI模型的应用层[^1]**
@@ -52,19 +52,19 @@ tags: HTTP
 
 ### 方法
 
-**GET:** 最常用的方法，通常用于请求服务器发送某个资源。
-HEAD：于GET方法类似，但服务器在响应中只返回首部，不会返回实体的主体部分。通常用于：
+**GET:** 最常用的方法，通常用于请求服务器发送某个资源。（HTTP/1.0），一般是幂等（一项操作被称为幂等的表示这项操作执行任意多次和执行一次的结果是完全一样的）
+**HEAD：**于GET方法类似，但服务器在响应中只返回首部，不会返回实体的主体部分。通常用于：（HTTP/1.0）
 * 在不获取资源的情况下了解资源的情况
 * 通过查看响应中的状态码，看某个对象是否存在。
 * 通过查看首部，测试资源是否被修改了
 
 **PUT：** 向服务器写入文档，用于向服务器上的资源（例如文件）中存储数据
 
-**POST：** 向服务器发送数据，广泛运用于表单提交
+**POST：** 向服务器发送数据，广泛运用于表单提交（HTTP/1.0）
 
 **TRACE：** 用于诊断，验证请求是否如愿穿过了请求/响应链。（缺陷：他假定中间应用程序对不同类型请求的处理是相同的，然而很多HTTP应用会根据不同方法作出不同的事情，那么有可能代理会将POST直接发送给服务器，而将GET请求发送给另一个HTTP应用程序），ps：该请求中不允许带有实体部分，响应的实体主体部分包含了响应服务器收到的请求的精确副本。
 
-**OPTIONS：** 可以不用世纪访问资源就能获取Web服务器支持的各种功能。比如通常支持哪种方法，或者对某些特殊资源支持哪些方法，从而判定访问各处资源的最优方式。
+**OPTIONS：** 可以不用实际访问资源就能获取Web服务器支持的各种功能。比如通常支持哪种方法，或者对某些特殊资源支持哪些方法，从而判定访问各处资源的最优方式。
 
 **DELETE：** 顾名思义删除请求URL所指定的资源，但无法保证删除操作一定被执行。因为HTTP规范允许服务器在不通知客户端的情况下撤销请求。
 
@@ -82,7 +82,7 @@ HEAD：于GET方法类似，但服务器在响应中只返回首部，不会返�
 **Referrer Policy：** request headers（请求头部）中的referer。（该请求使用的是在同等安全等级下（例如https页面请求https地址），发送referer，但当请求方低于发送方（例如https页面请求http地址），不发送referer）
 
 <Response Headers：>  
-**Connection：** 告诉服务器本次连接是长连接。不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache)中设定这个时间  
+**Connection：** 告诉服务器本次连接是长连接。不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache)中设定这个时间。close为关闭长连接。    
 **Content-Type：** 返回内容的MIME类型  
 **Date：** 原始服务器消息发出的时间  
 **Server：** web服务器软件名称（维客这个是由淘宝网发起的Web服务器项目）  
@@ -101,8 +101,8 @@ HEAD：于GET方法类似，但服务器在响应中只返回首部，不会返�
 2. client把cookie通过HTTP Request 中的“Cookie: header”发送给server  
 3. 每次HTTP请求，Cookie都会被发送。  
 
-**Pragma：** 包括实现特定的指令，它可应用到响应链上的任何接收方  
-**Referer：** 访问的域名地址  
+**Pragma：** 优先级是高于Cache-Control，html里面的mate标签中指定no-catch，不过仅在IE中有效  
+**Referer：** 访问的域名地址，由浏览器生成，并不是所有浏览器都会设置该值。可以伪造，并不可信  
 **User-Agent：** 代表的是客户端浏览器
 ## HTTP演变过程
 
@@ -129,7 +129,7 @@ HTTP连接是HTTP报文传输的关键通道，世界上几乎所有的HTTP通�
 
 1、具体含义：TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。一般来说，TCP/IP是利用IP进行通信时所必须用到的协议群的统称。具体来说IP或ICMP、TCP或UDP、TELENT或FTP、以及HTTP等都属于TCP/IP协议。
 
-如图所示：HTTP即位于Application层（HTTPS则是在Application层和Transport层增加安全层），TCP则位于Transport层，IP位于Internet层：
+如图所示：HTTP即位于Application层（HTTPS则是在Application层和Transport层增加安全层），TCP则位于Transport层，IP位于Internet层：TCP/IP四层模型分为应用层、运输层、网络层、数据链路层
 ![TCP/IP](http://www.nomiwan.com/TCP:IP%E5%8D%8F%E8%AE%AE%E7%BE%A4.png)
 
 3、传输形式：HTTP以流的形式将报文数据的内容通过一条打开的TCP连接按序传输，TCP将数据流砍成段，封装在IP分组中。通过英特网进行传输。如图所示：
