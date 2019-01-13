@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="前言：作为一个勤奋得过且过的前端，感觉算法离得好遥远。最近突然奋发向上，想要了解一下算法这玩意儿是啥？然后发现了一个叫leetcode的算法网站，盲目做了几道题，偷偷看了几题的算法解答。发现有一个复杂度分析的东西，这东西又分为时间复杂度和空间复杂度。为了了解自己的算法有多烂，当然我要了解这时间复杂度和空间复杂度是什么东西？  时间复杂度（Time Complexity） 顾名思义就是和时间有关">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间复杂度和空间复杂度">
+<meta property="og:url" content="https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/index.html">
+<meta property="og:site_name" content="正直清纯的女大学生">
+<meta property="og:description" content="前言：作为一个勤奋得过且过的前端，感觉算法离得好遥远。最近突然奋发向上，想要了解一下算法这玩意儿是啥？然后发现了一个叫leetcode的算法网站，盲目做了几道题，偷偷看了几题的算法解答。发现有一个复杂度分析的东西，这东西又分为时间复杂度和空间复杂度。为了了解自己的算法有多烂，当然我要了解这时间复杂度和空间复杂度是什么东西？  时间复杂度（Time Complexity） 顾名思义就是和时间有关">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-26T14:59:33.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间复杂度和空间复杂度">
+<meta name="twitter:description" content="前言：作为一个勤奋得过且过的前端，感觉算法离得好遥远。最近突然奋发向上，想要了解一下算法这玩意儿是啥？然后发现了一个叫leetcode的算法网站，盲目做了几道题，偷偷看了几题的算法解答。发现有一个复杂度分析的东西，这东西又分为时间复杂度和空间复杂度。为了了解自己的算法有多烂，当然我要了解这时间复杂度和空间复杂度是什么东西？  时间复杂度（Time Complexity） 顾名思义就是和时间有关">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>时间复杂度和空间复杂度</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/hajiwon1023">项目</a></li>
+         
+          <li><a href="/search">搜索</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/11/hello-world/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/12/07/浅谈HTTP原理/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&text=时间复杂度和空间复杂度"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&is_video=false&description=时间复杂度和空间复杂度"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=时间复杂度和空间复杂度&body=Check out this article: https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&name=时间复杂度和空间复杂度&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#时间复杂度time-complexity"><span class="toc-number">1.</span> <span class="toc-text">时间复杂度（Time Complexity）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公式"><span class="toc-number">1.1.</span> <span class="toc-text">公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算公式"><span class="toc-number">1.2.</span> <span class="toc-text">计算公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空间复杂度space-complexity"><span class="toc-number">2.</span> <span class="toc-text">空间复杂度（Space Complexity）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结尾"><span class="toc-number">3.</span> <span class="toc-text">结尾</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        时间复杂度和空间复杂度
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">正直清纯的女大学生</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-10T03:20:37.000Z" itemprop="datePublished">2018-12-10</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/算法/">算法</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!--toc-->
+<blockquote>
+<p>前言：作为一个<s>勤奋</s><strong>得过且过</strong>的前端，感觉算法离得好遥远。最近突然奋发向上，想要了解一下算法这玩意儿是啥？然后发现了一个叫<a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">leetcode</a>的算法网站，盲目做了几道题，偷偷看了几题的算法解答。发现有一个复杂度分析的东西，这东西又分为时间复杂度和空间复杂度。为了了解自己的算法有多烂，当然我要了解这时间复杂度和空间复杂度是什么东西？</p>
+</blockquote>
+<h2 id="时间复杂度time-complexity">时间复杂度（Time Complexity）</h2>
+<p>顾名思义就是和时间有关的，那就是运行时间长短的事儿了。根据维基百科定义：</p>
+<blockquote>
+<p>算法的时间复杂度是一个函数，它定性描述该算法的运行时间。常用大O符号表述，不包括这个函数的低阶项和首项系数。</p>
+</blockquote>
+<h3 id="公式">公式</h3>
+<p>记作：T(n) = Ｏ(f(n));这里面的n应该表示的是一个随机的正整数，而T(n)则是当n为某个随机正整数时，所要执行的运算时间，学术名叫做<strong>时间频度</strong>，Ｏ(f(n)) 为算法的渐进时间复杂度，简称时间复杂度。值得注意的是时间频度不同，但时间复杂度可能相同，如：T(n) = n^2 + 2n + 3 和 T(n) = 2n^2 + 1 中频度不同，但时间复杂度相同，都为O(n^2)。</p>
+<h3 id="计算公式">计算公式</h3>
+<p>那么如何得到f(n)?</p>
+<p>例如：计算一个1+2+3+……+10+……+n
+第一种算法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="number">0</span>;<span class="comment">// 执行1次</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i ++) &#123; <span class="comment">// 执行n + 1次</span></span><br><span class="line">    result += i;  <span class="comment">// 执行n次</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> result;<span class="comment">// 执行1次</span></span><br></pre></td></tr></table></figure>
+<p>第二种算法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="number">0</span>; <span class="comment">// 执行1次</span></span><br><span class="line">result = (<span class="number">1</span> + n) * n / <span class="number">2</span>; <span class="comment">// 执行1次</span></span><br><span class="line"><span class="keyword">return</span> result; <span class="comment">// 执行1次</span></span><br></pre></td></tr></table></figure>
+<p>第一种算法执行次数：1 + n + 1 + n + 1 = 2n + 3;
+因此该算法执行了2n + 3;
+第二种算法执行次数： 1 + 1 + 1 ；
+因此该算法执行了3；
+按照不包括这个函数的低阶项和首项系数的原则。则这两个算法的时间复杂度分别为O(n)和O(1)</p>
+<h2 id="空间复杂度space-complexity">空间复杂度（Space Complexity）</h2>
+<p>是指一个程序运行完所需内存的大小，空间复杂度则是预先对所需内存进行估计。存储空间主要包含以下两个部分：</p>
+<ol>
+<li>
+<p><strong>固定部分</strong>，与输入输出的数据大小无关。主要包括指令空间（即代码）、数据空间（即常量，简单变量）所占空间。这部分称为静态空间</p>
+</li>
+<li>
+<p><strong>可变部分</strong>，主要包括动态分布空间、递归所需空间，顾名思义与固定部分相反，是与输入输出大小有关。这部分空间是衡量算法的空间复杂度的主要部分。</p>
+</li>
+</ol>
+<p>用公式记作：<strong>S(n)=O(f(n))</strong>；n为问题的规模，S(n)表示空间复杂度，存储空间用f(n)表示</p>
+<h2 id="结尾">结尾</h2>
+<p>对于一个算法，空间复杂度和时间复杂度往往是相互影响的，当追求时间复杂度时，往往空间复杂度的性能变差，反之亦然。因此当设计一个算法时，要权衡利弊，综合算法的各项性能、机器的环境，使用频率，数据量大小，描述语言特性等来设计出较好的算法。两者复杂度合称为算法的复杂度</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/hajiwon1023">项目</a></li>
+         
+          <li><a href="/search">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#时间复杂度time-complexity"><span class="toc-number">1.</span> <span class="toc-text">时间复杂度（Time Complexity）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公式"><span class="toc-number">1.1.</span> <span class="toc-text">公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算公式"><span class="toc-number">1.2.</span> <span class="toc-text">计算公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空间复杂度space-complexity"><span class="toc-number">2.</span> <span class="toc-text">空间复杂度（Space Complexity）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结尾"><span class="toc-number">3.</span> <span class="toc-text">结尾</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&text=时间复杂度和空间复杂度"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&is_video=false&description=时间复杂度和空间复杂度"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=时间复杂度和空间复杂度&body=Check out this article: https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&title=时间复杂度和空间复杂度"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://hajiwon1023.github.io/2018/12/10/时间复杂度和空间复杂度/&name=时间复杂度和空间复杂度&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 HU NING
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="http://github.com/hajiwon1023">项目</a></li>
+         
+          <li><a href="/search">搜索</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
