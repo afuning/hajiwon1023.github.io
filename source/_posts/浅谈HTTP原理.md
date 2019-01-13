@@ -87,7 +87,7 @@ tags: HTTP
 **Date：** 原始服务器消息发出的时间  
 **Server：** web服务器软件名称（维客这个是由淘宝网发起的Web服务器项目）  
 **Set-Cookie：** 用来在浏览器种cookie，一旦被种下，当浏览器访问符合条件的url地址时，会自动带上这个cookie  
-**Transfer-Encoding：** 文件传输编码（分块编码(chunked)）  
+**Transfer-Encoding：** 文件传输编码（分块编码(chunked))。一种数据传输机制，允许HTTP由应用服务器发送给客户端应用（ 通常是网页浏览器）的数据可以分成多个部分。分块传输编码只在HTTP协议1.1版本（HTTP/1.1）中提供
 
 <Request Headers：>  
 **Accept：** 代表浏览器可以接收的数据类型  
